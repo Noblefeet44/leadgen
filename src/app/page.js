@@ -45,7 +45,6 @@ export default function Dashboard() {
 
   const handleSearch = async () => {
     if (!prompt) return setError("Please enter a search prompt.");
-    if (!geminiKey || !vibeKey) return setError("Please configure API keys in Settings first.");
 
     setIsLoading(true);
     setError("");
@@ -101,9 +100,6 @@ export default function Dashboard() {
 
   const handleSyncAirtable = async () => {
     if (!results.length) return;
-    if (!airtableToken || !airtableBaseId || !airtableTable) {
-      return setError("Please configure Airtable settings first.");
-    }
 
     setIsSyncing(true);
     setError("");

@@ -27,8 +27,10 @@ export async function POST(req) {
       - company_country_code: { "values": ["US", "GB", etc (alpha-2 codes)] }
       - company_name: { "values": ["Meta", "Google"] }
       - company_revenue: { "values": ["0-500K", "500K-1M", "1M-5M", "5M-10M", "10M-25M", "25M-75M", "75M-200M", "200M-500M", "500M-1B", "1B-10B", "10B-100B"] }
-      - linkedin_category: { "values": ["software development", "retail"] }
+      - company_keywords: { "values": ["keyword1", "keyword2"] }
       - has_website: { "value": true/false }
+      
+      IMPORTANT: DO NOT use the "linkedin_category" filter because it requires exact enums. Use "company_keywords" instead for finding specific industries (like "plumbing").
 
       Output ONLY valid JSON.
     `;

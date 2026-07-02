@@ -49,12 +49,15 @@ export async function POST(req) {
       return NextResponse.json({ error: "Failed to parse AI translated filters." }, { status: 500 });
     }
 
+    // If Gemini nested it under a "filters" key, extract it
+    const actualFilters = filters.filters ? filters.filters : filters;
+
     // Step 2: Fetch leads from Vibe Prospecting API
     const vibePayload = {
       mode: "full",
       size: Math.min(count || 10, 500),
       page_size: Math.min(count || 10, 500),
-      filters: filters
+      filters: actualFilters
     };
 
     const vibeResponse = await fetch("https://api.explorium.ai/v1/prospects", {
